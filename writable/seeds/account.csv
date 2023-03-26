@@ -1,0 +1,8 @@
+id,username,first_name,last_name,email,address,phone,password
+1,accuser1,User 1,Account,accuser1@email.com,Desa Wisata Kampuang Minang Nagari Sumpu,081966159032,akunaku1
+2,accuser2,User 2,Account,accuser2@email.com,Desa Wisata Kampuang Minang Nagari Sumpu,081211536051,akunaku2
+3,accuser3,User 3,Account,accuser3@email.com,Desa Wisata Kampuang Minang Nagari Sumpu,081673777122,akunaku3
+4,accuser4,User 4,Account,accuser4@email.com,Desa Wisata Kampuang Minang Nagari Sumpu,081375337211,akunaku4
+5,accowner1,Pokdarwis,Account,accowner1@email.com,Desa Wisata Kampuang Minang Nagari Sumpu,081711822434,akunaku5
+6,accowner2,Warga,Account,accowner2@email.com,Desa Wisata Kampuang Minang Nagari Sumpu,081851858447,akunaku6
+7,accadmin1,Zuherman,Account,accadmin1@email.com,Desa Wisata Kampuang Minang Nagari Sumpu,08111678345,akunaku7
