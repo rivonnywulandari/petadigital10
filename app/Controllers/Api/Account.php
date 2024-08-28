@@ -3,7 +3,6 @@
 namespace App\Controllers\Api;
 
 use App\Models\AccountModel;
-use App\Models\VisitHistoryModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\Files\File;
 use CodeIgniter\RESTful\ResourceController;
@@ -27,7 +26,6 @@ class Account extends ResourceController
     public function __construct()
     {
         $this->accountModel = new AccountModel();
-        $this->visitHistoryModel = new VisitHistoryModel();
         $this->config = config('Auth');
         $this->auth = service('authentication');
     }

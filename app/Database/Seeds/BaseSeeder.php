@@ -13,14 +13,13 @@ class BaseSeeder extends Seeder
         $this->call('AccountSeeder');
         $this->call('GroupSeeder');
         $this->call('UserGroupSeeder');
-        $this->call('VillageSeeder');
+        $this->call('CampusSeeder');
 
-        // Rumah Gadang Seed
+        // Bangunan Seed
+        $this->call('CategorySeeder');
         $this->call('RecommendationSeeder');
-        $this->call('RumahGadangSeeder');
-        $this->call('FacilityRumahGadangSeeder');
-        $this->call('DetailFacilityRumahGadangSeeder');
-        $this->call('GalleryRumahGadangSeeder');
+        $this->call('BangunanSeeder');
+        $this->call('GalleryBangunanSeeder');
 
         // // Culinary Place Seed
         // $this->call('CulinaryPlaceSeeder');
@@ -35,12 +34,12 @@ class BaseSeeder extends Seeder
         // $this->call('GallerySouvenirPlaceSeeder');
 
         // Event Seed
-        $this->call('CategoryEventSeeder');
-        $this->call('EventSeeder');
-        $this->call('GalleryEventSeeder');
+        // $this->call('CategoryEventSeeder');
+        // $this->call('EventSeeder');
+        // $this->call('GalleryEventSeeder');
 
         // Other Seed
-        $this->call('VisitHistorySeeder');
-        $this->call('ReviewSeeder');
+        // $this->call('VisitHistorySeeder');
+        // $this->call('ReviewSeeder');
     }
 }

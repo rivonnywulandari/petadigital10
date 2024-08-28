@@ -12,7 +12,7 @@ class Upload extends ResourceController
 {
     protected $helpers = ['filesystem'];
     use ResponseTrait;
-    
+
     public function avatar()
     {
         $folder = uniqid() . '-' . date('YmdHis');
@@ -33,24 +33,25 @@ class Upload extends ResourceController
         }
         return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(400)->setBody("file is null, upload failed");
     }
-    
-    public function remove() {
+
+    public function remove()
+    {
         $folder = $this->request->getBody();
-        if ($folder != 'default.jpg'){
+        if ($folder != 'default.jpg') {
             $filepath = WRITEPATH . 'uploads/' . $folder;
             $deleteFile = delete_files($filepath);
             if (!$deleteFile) {
-                return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(400)->setBody("Failed deleting files in directory: ". $filepath);
+                return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(400)->setBody("Failed deleting files in directory: " . $filepath);
             }
             $removeDir = rmdir($filepath);
             if (!$removeDir) {
-                return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(400)->setBody("Failed deleting directory: ". $filepath);
+                return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(400)->setBody("Failed deleting directory: " . $filepath);
             }
             return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(200)->setBody($filepath);
         }
         return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(200)->setBody($folder);
     }
-    
+
     public function photo()
     {
         $folder = uniqid() . '-' . date('YmdHis');
@@ -72,7 +73,7 @@ class Upload extends ResourceController
         }
         return $this->response->setHeader('Content-Type', 'text/plain')->setStatusCode(400)->setBody("file is null, upload failed");
     }
-    
+
     public function video()
     {
         $folder = uniqid() . '-' . date('YmdHis');

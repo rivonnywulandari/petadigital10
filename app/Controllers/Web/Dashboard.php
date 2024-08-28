@@ -4,78 +4,80 @@ namespace App\Controllers\Web;
 
 use App\Controllers\BaseController;
 use App\Models\AccountModel;
-use App\Models\EventModel;
-use App\Models\FacilityRumahGadangModel;
-use App\Models\RumahGadangModel;
+use App\Models\BangunanModel;
+use App\Models\CampusModel;
+use App\Models\CategoryModel;
 
 class Dashboard extends BaseController
 {
-    protected $rumahGadangModel;
-    protected $eventModel;
-    protected $facilityModel;
+    protected $bangunanModel;
+    protected $campusModel;
+    protected $categoryModel;
+  
     protected $accountModel;
     protected $helpers = ['auth'];
     
     public function __construct()
     {
-        $this->rumahGadangModel = new RumahGadangModel();
-        $this->eventModel = new EventModel();
-        $this->facilityModel = new FacilityRumahGadangModel();
+        $this->bangunanModel = new BangunanModel();
+        $this->campusModel = new CampusModel();
+        $this->categoryModel = new CategoryModel();
+     
         $this->accountModel = new AccountModel();
     }
     public function index()
     {
-        if (in_groups("owner")) {
-            return redirect()->to(base_url('/dashboard/rumahGadang'));
-        } elseif (in_groups("admin")) {
+        if (in_groups("admin")) {
             return redirect()->to(base_url('/dashboard/users'));
         }
         return redirect()->to(base_url('/web'));
     }
     
-    public function rumahGadang()
+    public function campus()
     {
+   
         $contents = [];
-        if (in_groups('admin')) {
-            $contents = $this->rumahGadangModel->get_list_rg_api()->getResultArray();
-        } elseif (in_groups('owner')) {
-            $contents = $this->rumahGadangModel->list_by_owner_api(user()->id)->getResultArray();
+        if (in_groups('admin')) {      
+            $contents = $this->campusModel->get_list_cp_api()->getResultArray();
         }
         
         $data = [
-            'title' => 'Manage Rumah Gadang',
-            'category' => 'Rumah Gadang',
+            'title' => 'Manage Campus',
+            'category' => 'Campus',
             'data' => $contents,
         ];
-        return view('dashboard/manage', $data);
+        return view('dashboard/managedata', $data);
     }
-    
-    public function event()
+
+    public function bangunan()
     {
+       
         $contents = [];
-        if (in_groups('admin')) {
-            $contents = $this->eventModel->get_list_ev_api()->getResultArray();
-        } elseif (in_groups('owner')) {
-            $contents = $this->eventModel->list_by_owner_api(user()->id)->getResultArray();
+        if (in_groups('admin')) {      
+            // $contents = $this->bangunanModel->list_by_admin_api(user()->id)->getResultArray();
+            $contents = $this->bangunanModel->get_list_bg_api()->getResultArray();
+
         }
         
         $data = [
-            'title' => 'Manage Event',
-            'category' => 'Event',
+            'title' => 'Manage Bangunan',
+            'category' => 'Bangunan',
             'data' => $contents,
         ];
-        return view('dashboard/manage', $data);
+        return view('dashboard/managedata', $data);
     }
+  
     
-    public function facility()
+    
+    public function category()
     {
-        $contents = $this->facilityModel->get_list_fc_api()->getResultArray();
+        $contents = $this->categoryModel->get_list_cat_api()->getResultArray();
         $data = [
-            'title' => 'Manage Facility',
-            'category' => 'Facility',
+            'title' => 'Manage Category',
+            'category' => 'Category',
             'data' => $contents,
         ];
-        return view('dashboard/manage', $data);
+        return view('dashboard/managedata', $data);
     }
     
     public function users()
@@ -86,19 +88,18 @@ class Dashboard extends BaseController
             'category' => 'Users',
             'data' => $contents,
         ];
-        return view('dashboard/manage', $data);
+        return view('dashboard/managedata', $data);
     }
     
     public function recommendation()
     {
         $contents = [];
         if (in_groups('admin')) {
-            $contents = $this->rumahGadangModel->get_list_recommendation_api()->getResultArray();
-        } elseif (in_groups('owner')) {
-            $contents = $this->rumahGadangModel->recommendation_by_owner_api(user()->id)->getResultArray();
+            $contents = $this->bangunanModel->get_list_recommendation_api()->getResultArray();
+        
         }
         
-        $recommendations = $this->rumahGadangModel->get_recommendation_data_api()->getResultArray();
+        $recommendations = $this->bangunanModel->get_recommendation_data_api()->getResultArray();
         $data = [
             'title' => 'Manage Recommendation',
             'category' => 'Recommendation',

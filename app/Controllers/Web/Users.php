@@ -72,6 +72,7 @@ class Users extends ResourcePresenter
     public function new()
     {
         return redirect()->to(previous_url());
+      
     }
 
     /**

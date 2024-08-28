@@ -1,7 +1,7 @@
 <footer>
     <div class="footer clearfix mb-0 text-muted">
         <div class="float-start">
-            <p><?= date('Y'); ?> &copy; Rahmat Hanafi</p>
+            <p><?= date('Y'); ?> &copy; Universitas Andalas</p>
         </div>
     </div>
 </footer>

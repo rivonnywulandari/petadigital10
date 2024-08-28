@@ -13,9 +13,7 @@ $uri3 = $uri[3] ?? '';
         <!-- Sidebar -->
         <div class="sidebar-menu">
             <div class="d-flex flex-column">
-                <div class="d-flex justify-content-center avatar avatar-xl me-3" id="avatar-sidebar">
-                    <img src="<?= base_url('media/photos/pesona_sumpu.png'); ?>" alt="" srcset="">
-                </div>
+                
                 <?php if (logged_in()): ?>
                 <div class="p-2 text-center">
                     <?php if (!empty(user()->first_name)): ?>

@@ -2,14 +2,14 @@
 <?= $this->extend('auth/index'); ?>
 
 <?= $this->section('content'); ?>
-    <div class="row justify-content-center align-items-center h-100" style="background-color: #2d499d">
+    <div class="row justify-content-center align-items-center h-100" style="background-color: #126638">
         <div class="col-xl-4 col-lg-5 col-10">
             <div class="card">
                 <div class="card-content">
                     <div id="auth-left">
                         <div class="auth-logo">
                             <a href="<?= base_url(); ?>"
-                            ><img src="<?= base_url('media/icon/logo.svg'); ?>" alt="Logo"
+                            ><img src="<?= base_url('media/icon/logounand.svg'); ?>" alt="Logo"
                                 /></a>
                         </div>
                         <h1 class="auth-title text-center"><?=lang('Auth.loginTitle')?></h1>
@@ -90,12 +90,12 @@
                             </button>
                         </form>
                         <?php if ($config->allowRegistration) : ?>
-                        <div class="text-center mt-4 text-lg">
+                        <!-- <div class="text-center mt-4 text-lg">
                             <p class="text-gray-600">
                                 <?=lang('Auth.needAnAccount')?>
                                 <a href="<?= route_to('register') ?>" class="font-bold"><?=lang('Auth.register')?></a> <br>
                             </p>
-                        </div>
+                        </div> -->
                         <?php endif; ?>
                     </div>
                 </div>

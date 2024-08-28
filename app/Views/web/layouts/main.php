@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title); ?> - Desa Wisata Kampuang Minang Nagari Sumpu</title>
+    <title><?= esc($title); ?> - Campus Maps Universitas Andalas</title>
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/main/app.css'); ?>">
@@ -13,7 +13,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= base_url('css/web.css'); ?>">
     <?= $this->renderSection('styles') ?>
-    <link rel="shortcut icon" href="<?= base_url('media/icon/favicon.svg'); ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url('media/icon/logounand.svg'); ?>" type="image/x-icon">
 
     <!-- Third Party CSS and JS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/shared/iconly.css'); ?>">

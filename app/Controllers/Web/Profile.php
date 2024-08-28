@@ -4,7 +4,6 @@ namespace App\Controllers\Web;
 
 use App\Controllers\BaseController;
 use App\Models\AccountModel;
-use App\Models\VisitHistoryModel;
 use CodeIgniter\Session\Session;
 use CodeIgniter\Files\File;
 use Myth\Auth\Config\Auth as AuthConfig;
@@ -14,7 +13,6 @@ use Myth\Auth\Password;
 class Profile extends BaseController
 {
     protected $accountModel;
-    protected $visitHistoryModel;
     protected $auth;
     
     /**
@@ -30,7 +28,6 @@ class Profile extends BaseController
     public function __construct()
     {
         $this->accountModel = new AccountModel();
-        $this->visitHistoryModel = new VisitHistoryModel();
     
         // Most services in this controller require
         // the session to be started - so fire it up!
@@ -129,7 +126,7 @@ class Profile extends BaseController
             }
         }
         
-        if (($request['avatar']) != 'default.jpg') {
+        if (($request['avatar']) != 'default.png') {
             $folder = $request['avatar'];
             $filepath = WRITEPATH . 'uploads/' . $folder;
             $filenames = get_filenames($filepath);
@@ -139,7 +136,7 @@ class Profile extends BaseController
             delete_files($filepath);
             rmdir($filepath);
         } else {
-            $requestData['avatar'] = 'default.jpg';
+            $requestData['avatar'] = 'default.png';
         }
         
         $query = $this->accountModel->update_account_users(user()->id, $requestData);

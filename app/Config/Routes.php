@@ -53,18 +53,15 @@ $routes->group('upload', ['namespace' => 'App\Controllers\Web'], function($route
 
 // App
 $routes->group('web', ['namespace' => 'App\Controllers\Web'], function($routes) {
-    $routes->get('rumahGadang/maps', 'RumahGadang::maps');
-    $routes->get('rumahGadang/detail/(:segment)', 'RumahGadang::detail/$1');
-    $routes->presenter('rumahGadang');
-    $routes->get('/', 'RumahGadang::recommendation');
-    $routes->get('event/maps', 'Event::maps');
-    $routes->get('event/detail/(:segment)', 'Event::detail/$1');
-    $routes->presenter('event');
-    $routes->get('visitHistory', 'VisitHistory::visitHistory', ['filter' => 'role:user']);
-    $routes->get('visitHistory/add', 'VisitHistory::addVisitHistory', ['filter' => 'role:user']);
-    $routes->post('visitHistory', 'VisitHistory::visitHistory', ['filter' => 'role:user']);
-    $routes->post('review', 'Review::add', [['filter' => 'role:user']]);
+     
+    $routes->presenter('bangunan');
+    $routes->get('bangunan/maps', 'Bangunan::maps');
+    $routes->get('bangunan/detail/(:segment)', 'Bangunan::detail/$1');
+    $routes->get('/', 'Bangunan::recommendation');
     
+    $routes->presenter('category');
+    $routes->get('category/detail/(:segment)', 'Category::detail/$1');
+
     
     // Profile
     $routes->group('profile', function ($routes) {
@@ -79,49 +76,40 @@ $routes->group('web', ['namespace' => 'App\Controllers\Web'], function($routes) 
 // Dashboard
 $routes->group('dashboard', ['namespace' => 'App\Controllers\Web', 'filter' => 'role:admin,owner'], function($routes) {
     $routes->get('/', 'Dashboard::index');
-    $routes->get('rumahGadang', 'Dashboard::rumahGadang',  ['filter' => 'role:owner']);
-    $routes->get('event', 'Dashboard::event',  ['filter' => 'role:owner']);
-    $routes->get('facility', 'Dashboard::facility', ['filter' => 'role:admin']);
+
+    $routes->get('bangunan', 'Dashboard::bangunan',  ['filter' => 'role:admin']);
+    $routes->delete('bangunan/delete/(:segment)', 'Bangunan::delete/$1', ['filter' => 'role:admin']);
+    
+
+    $routes->get('campus', 'Dashboard::campus',  ['filter' => 'role:admin']);
+    $routes->delete('campus/delete/(:segment)', 'Campus::delete/$1', ['filter' => 'role:admin']);
+
+   
+    $routes->get('category', 'Dashboard::category', ['filter' => 'role:admin']);
+    $routes->post('category/edit/(:segment)', 'Category::update/$1', ['filter' => 'role:admin']);
+    $routes->delete('category/delete/(:segment)', 'Category::delete/$1', ['filter' => 'role:admin']);
+
     $routes->get('recommendation', 'Dashboard::recommendation',  ['filter' => 'role:admin']);
     $routes->get('users', 'Dashboard::users', ['filter' => 'role:admin']);
     
-    $routes->presenter('rumahGadang',  ['filter' => 'role:owner']);
-    $routes->presenter('event',  ['filter' => 'role:owner']);
-    $routes->presenter('facility', ['filter' => 'role:admin']);
+    $routes->presenter('bangunan',  ['filter' => 'role:admin']);
+    $routes->presenter('campus',  ['filter' => 'role:admin']);
+
+    $routes->presenter('category', ['filter' => 'role:admin']);
     $routes->presenter('users', ['filter' => 'role:admin']);
 });
 
 // API
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) {
-    $routes->resource('rumahGadang');
-    $routes->get('recommendation', 'RumahGadang::recommendation');
-    $routes->post('recommendationOwner', 'RumahGadang::recommendationByOwner');
-    $routes->get('recommendationList', 'RumahGadang::recommendationList');
-    $routes->post('recommendation', 'RumahGadang::updateRecommendation');
-    $routes->post('rumahGadangOwner', 'RumahGadang::listByOwner');
-    $routes->post('rumahGadang/findByName', 'RumahGadang::findByName');
-    $routes->post('rumahGadang/findByRadius', 'RumahGadang::findByRadius');
-    $routes->post('rumahGadang/findByFacility', 'RumahGadang::findByFacility');
-    $routes->post('rumahGadang/findByRating', 'RumahGadang::findByRating');
-    $routes->post('rumahGadang/findByCategory', 'RumahGadang::findByCategory');
-    $routes->get('rumahGadang/maps', 'RumahGadang::maps');
-    $routes->get('event/category', 'Event::category');
-    $routes->resource('event');
-    $routes->post('eventOwner', 'Event::listByOwner');
-    $routes->post('event/findByName', 'Event::findByName');
-    $routes->post('event/findByRadius', 'Event::findByRadius');
-    $routes->post('event/findByRating', 'Event::findByRating');
-    $routes->post('event/findByCategory', 'Event::findByCategory');
-    $routes->post('event/findByDate', 'Event::findByDate');
-    // $routes->resource('culinaryPlace');
-    // $routes->post('culinaryPlaceOwner', 'CulinaryPlace::listByOwner');
-    // $routes->post('culinaryPlace/findByRadius', 'CulinaryPlace::findByRadius');
-    // $routes->resource('worshipPlace');
-    // $routes->post('worshipPlaceOwner', 'WorshipPlace::listByOwner');
-    // $routes->post('worshipPlace/findByRadius', 'WorshipPlace::findByRadius');
-    // $routes->resource('souvenirPlace');
-    // $routes->post('souvenirPlaceOwner', 'SouvenirPlace::listByOwner');
-    // $routes->post('souvenirPlace/findByRadius', 'SouvenirPlace::findByRadius');
+ 
+    $routes->get('bangunan/category', 'Bangunan::category');
+    $routes->resource('bangunan');
+    $routes->get('bangunan/maps', 'Bangunan::maps');
+    $routes->post('bangunanAdmin', 'Bangunan::listByAdmin');
+    $routes->post('bangunan/findByName', 'Bangunan::findByName');
+    $routes->post('bangunan/findByCategory', 'Bangunan::findByCategory');
+    $routes->post('recommendation', 'Bangunan::updateRecommendation');
+
     $routes->resource('account');
     $routes->post('account/profile', 'Account::profile');
     $routes->post('account/changePassword', 'Account::changePassword');
@@ -132,7 +120,9 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) 
     $routes->resource('user');
     $routes->get('owner', 'User::owner');
     $routes->resource('facility');
+    $routes->resource('category');
     $routes->post('village', 'Village::getData');
+    $routes->post('campus', 'Campus::getData');
     $routes->post('login', 'Profile::attemptLogin');
     $routes->post('profile', 'Profile::profile');
     $routes->get('logout', 'Profile::logout');

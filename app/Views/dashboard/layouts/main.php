@@ -13,7 +13,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= base_url('css/web.css'); ?>">
     <?= $this->renderSection('styles') ?>
-    <link rel="shortcut icon" href="<?= base_url('media/icon/favicon.svg'); ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url('media/icon/logounand.svg'); ?>" type="image/x-icon">
     
     <!-- Third Party CSS and JS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/shared/iconly.css'); ?>">

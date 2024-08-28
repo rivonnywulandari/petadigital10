@@ -8,7 +8,7 @@
         <meta content="" name="description" />
 
         <!-- Favicon -->
-        <link href="media/icon/favicon.svg" rel="icon" />
+        <link href="media/icon/logounand.svg" rel="icon" />
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />

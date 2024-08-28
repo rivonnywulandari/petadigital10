@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?= esc($title); ?> - Desa Wisata Kampuang Minang Nagari Sumpu</title>
+    <title><?= esc($title); ?> - Peta Digital Universitas Andalas</title>
 
     <!-- Favicon -->
-    <link href="media/icon/favicon.svg" rel="icon" />
+    <link href="media/icon/logounand.svg" rel="icon" />
     
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,8 +48,8 @@
             data-wow-delay="0.1s"
     >
         <a href="/" class="navbar-brand p-0">
-            <img class="img-fluid me-3" src="media/icon/logo.svg" alt="Icon" />
-            <h1 class="m-0 text-primary">Tourism Village</h1>
+            <img class="img-fluid me-3" src="media/icon/logounand.svg" alt="Icon" />
+            <h1 class="m-0 text-primary">Campus Maps Unand</h1>
         </a>
         <button
                 type="button"
@@ -62,7 +62,7 @@
         <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
                 <a href="<?= base_url('web'); ?>" class="nav-item nav-link">Explore</a>
-                <a href="<?= base_url(); ?>" class="nav-item nav-link">About</a>
+                <!-- <a href="<?= base_url(); ?>" class="nav-item nav-link">About</a> -->
             </div>
         </div>
     </nav>
@@ -74,9 +74,9 @@
     </div>
     <!-- End Auth Content -->
 
-    <div class="row justify-content-center align-items-center m-0" style="background-color: #2d499d">
+    <div class="row justify-content-center align-items-center m-0" style="background-color: #126638">
         <div class="col">
-            <p class="text-center text-white"><?= date('Y'); ?> &copy; Rahmat Hanafi</p>
+            <p class="text-center text-white"><?= date('Y'); ?> &copy; Universitas Andalas</p>
         </div>
     </div>
 </body>
